@@ -26,6 +26,7 @@ class TPrimaryHeaderContainer extends StatelessWidget {
                 right: -250,
                 child: TCircularContainer(
                   backgroundColor: TColors.textWhite.withOpacity(0.1),
+                  radius: 400,
                 ),
               ),
               Positioned(
@@ -33,6 +34,7 @@ class TPrimaryHeaderContainer extends StatelessWidget {
                 right: -300,
                 child: TCircularContainer(
                   backgroundColor: TColors.textWhite.withOpacity(0.1),
+                  radius: 400,
                 ),
               ),
               child,
