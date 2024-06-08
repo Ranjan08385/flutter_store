@@ -5,6 +5,7 @@ import 'package:flutter_store/common/styles/shadows.dart';
 import 'package:flutter_store/common/widgets/custom_shapes/containers/circular_container.dart';
 import 'package:flutter_store/common/widgets/icons/circular_icons.dart';
 import 'package:flutter_store/common/widgets/images/t_rounded_image.dart';
+import 'package:flutter_store/common/widgets/texts/brand_title_text_with_verified_icon.dart';
 import 'package:flutter_store/common/widgets/texts/product_price_text.dart';
 import 'package:flutter_store/common/widgets/texts/product_title_text.dart';
 import 'package:flutter_store/utils/constants/colors.dart';
@@ -34,12 +35,13 @@ class ProductCardVertical extends StatelessWidget {
             TCircularContainer(
               height: 180,
               padding: const EdgeInsets.all(TSizes.sm),
-              backgroundColor: dark ? TColors.dark : TColors.white,
+              backgroundColor: dark ? TColors.dark : TColors.light,
               child: Stack(
                 children: [
-                  const TRoundedImage(
+                  TRoundedImage(
                     imageUrl: TImages.product1,
                     applyImageRadius: true,
+                    backgroundColor: dark ? TColors.dark : TColors.light,
                   ),
                   Positioned(
                     top: 0,
@@ -73,64 +75,52 @@ class ProductCardVertical extends StatelessWidget {
               ),
             ),
             const SizedBox(height: TSizes.spaceBtnItems / 2),
-            Padding(
-              padding: const EdgeInsets.only(left: TSizes.sm),
+            const Padding(
+              padding: EdgeInsets.only(left: TSizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const ProductTitleText(
+                  ProductTitleText(
                     title: "Grey Nike Air Shoe",
                     smallSize: true,
                   ),
-                  const SizedBox(height: TSizes.spaceBtnItems / 2),
-                  Row(
-                    children: [
-                      Text(
-                        "Nike",
-                        style: Theme.of(context).textTheme.labelMedium,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                      const SizedBox(width: TSizes.xs),
-                      const Icon(
-                        Iconsax.verify5,
-                        color: TColors.primary,
-                        size: TSizes.iconXs,
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const ProductPriceText(
-                        price: "35.5",
-                        isLarge: false,
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: TColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(TSizes.cardRadiusMd),
-                            bottomRight:
-                                Radius.circular(TSizes.productImageRadius),
-                          ),
-                        ),
-                        child: const SizedBox(
-                          width: TSizes.iconLg * 1.2,
-                          height: TSizes.iconLg * 1.2,
-                          child: Center(
-                            child: Icon(
-                              Iconsax.add,
-                              color: TColors.white,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  )
+                  SizedBox(height: TSizes.spaceBtnItems / 2),
+                  BrandTitleTextWithVerified(title: "Nike"),
                 ],
               ),
             ),
+            const Spacer(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: TSizes.sm),
+                  child: ProductPriceText(
+                    price: "35.5",
+                    isLarge: false,
+                  ),
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: TColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(TSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(TSizes.productImageRadius),
+                    ),
+                  ),
+                  child: const SizedBox(
+                    width: TSizes.iconLg * 1.2,
+                    height: TSizes.iconLg * 1.2,
+                    child: Center(
+                      child: Icon(
+                        Iconsax.add,
+                        color: TColors.white,
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            )
           ],
         ),
       ),
